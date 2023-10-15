@@ -10,7 +10,7 @@ Here the 3 users are making multiple requests to the server, some more than the 
 
 
 ## Project Solution - variation 1
-### Demo method: Using the terminal
+#### Demo method: Using the terminal
 
 There are 2 servers that can handle 1 request each at the same time.
 The server finishes after a random period of time from 0.5 seconds to 2 seconds, and after this period it can handle new requests 
