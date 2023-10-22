@@ -1,6 +1,12 @@
 #Rate Limiter Project
 created by Charity Grey (c) 2023
+
+# Table of Contents
+1. [Project Context](#project-context)
+2. [Credits](#credits)
+
 ## Project context:
+[Back to top](#table-of-contents)
 
 Database Server is responding to querying requests from different users + computers, and we must manage different requests and queue them equally without letting one user clog up the server with all their requests
 
@@ -16,20 +22,17 @@ Here the 3 users are making multiple requests to the server, some more than the 
 
 ![Diagram of Server connected to User 1, User 2 and User 3](./ContextDiagrams/diagram1.png)
 
-## Project Solution - variation 1
-#### Demo method: Using the terminal
+Advanced version: for future implementation. TODO 22Oct23;
 
-There are 2 servers that can handle 1 request each at the same time.
-The server finishes after a random period of time from 0.5 seconds to 2 seconds, and after this period it can handle new requests 
 
-Instead of just queuing the requests in order of recieving it, we need to manage them.
+![Diagram of Server connected to User 1, Company 1 and Company 2. Company 1 and 2 branch off into more users.](./ContextDiagrams/diagram2.png)
 
-How will we set this environment up?
-Requirements: 
-- Users must be identified
-   - Must be created and instantiated?
-- Servers must operate on their own (do I need threading??)
-   - Require two concurrent servers
-   - Require event-driven programming
-- Design of rate limiter
-   - one single rate limiter that receives requests, queues organizes requests, and also sends requests to server to be processed
+
+
+# Credits
+[Back to top](#table-of-contents)
+
+- https://towardsdatascience.com/designing-a-rate-limiter-6351bd8762c6
+- https://www.youtube.com/watch?v=FU4WlwfS3G0
+- https://github.com/charity-g/CPSC221/blob/main/pa3/qtvar.h
+- https://blog.logrocket.com/rate-limiting-node-js/ 
