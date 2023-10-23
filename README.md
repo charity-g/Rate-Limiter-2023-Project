@@ -1,9 +1,18 @@
-#Rate Limiter Project
+Rate Limiter Project
 created by Charity Grey (c) 2023
+[GitHub Repo link](https://github.com/charity-g/Rate-Limiter-2023-Project)
 
 # Table of Contents
-1. [Project Context](#project-context)
-2. [Credits](#credits)
+1. [Running the Project(deployment)](#deployment)
+2. [Project Context](#project-context)
+3. [Project Implementation](#project-implementation)
+4. [Credits](#credits)
+
+## Deployment
+Feel free to use any compiler to run main. My tutorial uses g++.
+
+TUTORIAL:
+In the terminal, cd into the folder and type `g++ -o rateproj main.cpp`. Afterwards, please run the program by typing `./rateproj`.
 
 ## Project context:
 [Back to top](#table-of-contents)
@@ -24,8 +33,26 @@ Here the 3 users are making multiple requests to the server, some more than the 
 
 Advanced version: for future implementation. TODO 22Oct23;
 
-
 ![Diagram of Server connected to User 1, Company 1 and Company 2. Company 1 and 2 branch off into more users.](./ContextDiagrams/diagram2.png)
+
+## Project Implementation:
+Using the terminal:
+
+To test which implementation is better at maxing out user request acceptance but prevent DoS attack, we have a few possible testing environment implementations:
+Terminal requests
+GUI 
+API sending actual https requests
+
+The vision of Project Implementation is to create an environment where the user can simulate the sending of requests, and then see how the solutions for rate limiting respond to it.
+
+REQUIREMENTS:
+- Users must be identified. We will start with the terminal being one user
+- Timestamps must be identified. We will start without pre-scheduling times, and simply focus on using computer time.
+- Number of requests. For now, unlimited requests at one time.
+- Design of rate limiter. We will start without an rate limiter, just an abstract virtual server that can handle all requests in 1 second.
+
+OUTPUT:
+A log of the requests given.
 
 
 
@@ -34,5 +61,5 @@ Advanced version: for future implementation. TODO 22Oct23;
 
 - https://towardsdatascience.com/designing-a-rate-limiter-6351bd8762c6
 - https://www.youtube.com/watch?v=FU4WlwfS3G0
-- https://github.com/charity-g/CPSC221/blob/main/pa3/qtvar.h
 - https://blog.logrocket.com/rate-limiting-node-js/ 
+- https://symfony.com/doc/current/rate_limiter.html
