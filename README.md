@@ -26,6 +26,18 @@ REQUIREMENTS:
 - Manage different requests and queue them equally based on time frame, incoming 
 - The database manager is ACID compliant, so we do not have to worry about consistency. In event that the server takes in a query that fails, it will seperately contact the client.
 
+User Requirements:
+- To see the 3 different options of rate limiting algorithm on a variety of pre-set use cases
+Pre-set use cases:
+- No calls
+- Perfect case
+- Many users, spread out
+- Many users at once
+- Constant use and then spike in users
+- Random case
+
+
+
 For example:
 Here the 3 users are making multiple requests to the server, some more than the other. To prevent overwhelming our server, we must devise a way to fairly distribute and queue the requests. Lets say Users 1 and 2 make requests at reasonable intervals, however out of nowhere, User 3 makes way more requests than the server can handle. We should cut off some of User 3's requests and prevent the server from responding to just user 3's requests so we don't block off service to user 1 and 2.
 
