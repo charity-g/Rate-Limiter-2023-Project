@@ -5,7 +5,7 @@
 #include <utility>
 
 using namespace std;
-
+   
 //PURPOSE: defines a user that can make requests
 class user {
 

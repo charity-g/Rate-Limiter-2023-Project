@@ -12,6 +12,8 @@ created by Charity Grey (c) 2023
 Feel free to use any compiler to run main. My tutorial uses g++.
 
 TUTORIAL:
+Requires:
+command prompt: `g++ -std=c++0x test.cpp -pthread`
 In the terminal, cd into the folder and type `g++ -o rateproj main.cpp`. Afterwards, please run the program by typing `./rateproj`.
 
 ## Project context:
@@ -37,7 +39,6 @@ Pre-set use cases:
 - Random case
 
 
-
 For example:
 Here the 3 users are making multiple requests to the server, some more than the other. To prevent overwhelming our server, we must devise a way to fairly distribute and queue the requests. Lets say Users 1 and 2 make requests at reasonable intervals, however out of nowhere, User 3 makes way more requests than the server can handle. We should cut off some of User 3's requests and prevent the server from responding to just user 3's requests so we don't block off service to user 1 and 2.
 
@@ -48,25 +49,7 @@ Advanced version: for future implementation. TODO 22Oct23;
 ![Diagram of Server connected to User 1, Company 1 and Company 2. Company 1 and 2 branch off into more users.](./ContextDiagrams/diagram2.png)
 
 ## Project Implementation:
-Using the terminal:
-
-To test which implementation is better at maxing out user request acceptance but prevent DoS attack, we have a few possible testing environment implementations:
-Terminal requests
-GUI 
-API sending actual https requests
-
-The vision of Project Implementation is to create an environment where the user can simulate the sending of requests, and then see how the solutions for rate limiting respond to it.
-
-REQUIREMENTS:
-- Users must be identified. We will start with the terminal being one user
-- Timestamps must be identified. We will start without pre-scheduling times, and simply focus on using computer time.
-- Number of requests. For now, unlimited requests at one time.
-- Design of rate limiter. We will start without an rate limiter, just an abstract virtual server that can handle all requests in 1 second.
-
-OUTPUT:
-A log of the requests given.
-
-
+Design Link:   https://www.figma.com/file/UiBy83C77zCyCCYVtj068m/Rate-Limiting-Project-Design?type=whiteboard&node-id=0%3A1&t=1USnevuOh0bR4zHa-1
 
 # Credits
 [Back to top](#table-of-contents)

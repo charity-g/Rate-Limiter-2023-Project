@@ -14,7 +14,8 @@ public:
     //It will only take in n requests per x time interval.
     //How the application should limit the requests should be through look back at the amount of requests in the last x time interval and determining how many more requests it can take (how many compared to n). 
 private:
-
+    //I want a data structure 
+    
 
 
 };
