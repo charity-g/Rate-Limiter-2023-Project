@@ -3,6 +3,7 @@
 #include <ctime> //time
 #include <fstream> //filestream
 #include <thread> //threading
+#include <vector>
 
 using namespace std;
 
@@ -13,6 +14,7 @@ void task1(string msg)
 }
 
 int main() {
+   vector<thread> threads = vector<thread>(); 
    bool x = true;
    string introduction = "Welcome to the Rate Limiter Simulator (c) 2023 Charity Grey\nTo exit, please type \'!exit\'.";
    string user_input = "";
