@@ -10,6 +10,8 @@ using namespace std;
 //PURPOSE: a request made by a user
 class request {
 public:
+   //constructor
+   request();
    time_t getCreationTime();
     
 private:

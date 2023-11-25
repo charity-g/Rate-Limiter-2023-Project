@@ -36,8 +36,7 @@ int main() {
          try {
             int n = stoi(user_input);
             for (int i = 0; i < n; i++) {
-               thread t1(task1, i);
-               threads.push_back(t1);
+               threads.push_back(thread(task1, to_string(i)));
             }
          }
          catch (exception e) {
@@ -46,7 +45,7 @@ int main() {
       }
    }
 
-   for (int i = 0; i < threads.size(); i++) {
+   for (unsigned int i = 0; i < threads.size(); i++) {
       threads[i].join();
       cout << "thread " << i << "joined" << endl;
    }
