@@ -1,6 +1,7 @@
 {
    "files.associations": {
       "cmath": "cpp",
-      "thread": "cpp"
+      "thread": "cpp",
+      "ctime": "cpp"
    }
 }

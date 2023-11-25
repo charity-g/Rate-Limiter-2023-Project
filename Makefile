@@ -3,15 +3,17 @@ EXETEST = rateProjtest
 
 OBJS_DIR = .objs
 
-#TODO !!! 25Nov23 CG- change files
-OBJS_EXE = main.o qtvar.o qtcount.o quadtree.o stats.o
-OBJS_EXETEST = testComp.o qtvar.o qtcount.o quadtree.o stats.o catch_config.o
-OBJS_PROVIDED = RGBAPixel.o lodepng.o PNG.o
+#TODO !!! 25Nov23 CG- change
+OBJS_EXE = main.o request.o
+OBJS_EXETEST = main.o request.o
+# OBJS_EXE = main.o qtvar.o qtcount.o quadtree.o stats.o
+# OBJS_EXETEST = testComp.o qtvar.o qtcount.o quadtree.o stats.o catch_config.o
+# OBJS_PROVIDED = RGBAPixel.o lodepng.o PNG.o
 
 CXX = clang++
 CXXFLAGS = -std=c++14 -c -g -O0 -Wall -Wextra -pedantic -Wno-unused-parameter -Wno-unused-variable
 LD = clang++
-LDFLAGS = -std=c++14 -lpthread -lm
+LDFLAGS = -std=c++14 -pthread -lm
 
 # Rules
 all: $(EXE) $(EXETEST)
@@ -20,12 +22,12 @@ all: $(EXE) $(EXETEST)
 $(OBJS_DIR)/%.o: %.cpp | $(OBJS_DIR)
 	$(CXX) $(CXXFLAGS) $< -o $@
 
-# Pattern rules for cs221util
-$(OBJS_DIR)/%.o: cs221util/%.cpp | $(OBJS_DIR)
-	$(CXX) $(CXXFLAGS) $< -o $@
+# # Pattern rules for cs221util
+# $(OBJS_DIR)/%.o: cs221util/%.cpp | $(OBJS_DIR)
+# 	$(CXX) $(CXXFLAGS) $< -o $@
 
-$(OBJS_DIR)/%.o: cs221util/lodepng/%.cpp | $(OBJS_DIR)
-	$(CXX) $(CXXFLAGS) $< -o $@
+# $(OBJS_DIR)/%.o: cs221util/lodepng/%.cpp | $(OBJS_DIR)
+# 	$(CXX) $(CXXFLAGS) $< -o $@
 
 # Create directories
 $(OBJS_DIR):
