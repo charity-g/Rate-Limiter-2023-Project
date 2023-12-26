@@ -4,28 +4,35 @@
 #include <fstream> //filestream
 #include <thread> //threading
 #include <vector>
+#include <chrono> //sleep
 
 #include "request.h"
+#include "rateLimiter.h"
 
 using namespace std;
 
 // The function we want to execute on the new thread.
-void task1(string msg)
+void task1(rateLimiter* rL, string msg)
 {
    request a;
    time_t recorded_time = a.getCreationTime();
-   cout << "task says: " << msg << " and created request at " << asctime(localtime(&recorded_time)) << endl;
+   cout << "task " << msg << ": created request at " << asctime(localtime(&recorded_time)) << endl;
+   bool requestSent = rL->sendRequestToServer(a);
+   cout << "task " << msg << ":  request sent? " << requestSent << endl;
+
 }
 
 int main() {
    vector<thread> threads = vector<thread>(); 
    bool x = true;
-   string introduction = "Welcome to the Rate Limiter Simulator (c) 2023 Charity Grey\nTo exit, please type \'!exit\'.";
+   string introduction = "Welcome to the Rate Limiter Simulator (c) 2023 charity-g\nPlease enter an INTEGER for the number of requests you would like to make (max 1000 for now)\nTo exit, please type \'!exit\'.";
    string user_input = "";
+   rateLimiter * rLsolution = new rateLimiter();
    // // time_t recorded_time;
    // struct tm * timeinfo;
    cout << introduction << endl;
    while (x) {
+
       cin >> user_input;
       // cout << time(&recorded_time) << " seconds has passed since 00:00 GMT, Jan 1, 1970" << endl;
       // timeinfo = localtime(&recorded_time);
@@ -36,19 +43,22 @@ int main() {
          try {
             int n = stoi(user_input);
             for (int i = 0; i < n; i++) {
-               threads.push_back(thread(task1, to_string(i)));
+               threads.push_back(thread(task1, rLsolution, to_string(i)));
+               x = false;
             }
          }
          catch (exception e) {
-            
+            cout << "User input was not an integer." << endl;
          } 
       }
    }
 
    for (unsigned int i = 0; i < threads.size(); i++) {
+      // Makes the main thread wait for the new thread to finish execution, therefore blocks its own execution.
       threads[i].join();
       cout << "thread " << i << "joined" << endl;
    }
-   // Makes the main thread wait for the new thread to finish execution, therefore blocks its own execution.
+   
+   delete rLsolution;
    return 1;
 }

@@ -3,9 +3,8 @@ EXETEST = rateProjtest
 
 OBJS_DIR = .objs
 
-#TODO !!! 25Nov23 CG- change
-OBJS_EXE = main.o request.o
-OBJS_EXETEST = main.o request.o
+OBJS_EXE = main.o request.o rateLimiter.o
+OBJS_EXETEST = main.o request.o rateLimiter.o
 # OBJS_EXE = main.o qtvar.o qtcount.o quadtree.o stats.o
 # OBJS_EXETEST = testComp.o qtvar.o qtcount.o quadtree.o stats.o catch_config.o
 # OBJS_PROVIDED = RGBAPixel.o lodepng.o PNG.o

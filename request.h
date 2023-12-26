@@ -10,14 +10,14 @@ using namespace std;
 //PURPOSE: a request made by a user
 class request {
 public:
-   //constructor
+   //constructor: sets creation time and request information
    request();
    time_t getCreationTime();
     
 private:
    time_t CreationTime;
-   time_t SentToServerTime;
-   time_t ProcessedTime;
+   time_t SentToServerTime; //wrong thing to put here
+   time_t ProcessedTime; //wrong thing to put here
 
 };
 
