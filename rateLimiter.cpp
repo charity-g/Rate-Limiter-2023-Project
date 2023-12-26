@@ -4,6 +4,7 @@ using namespace std;
 
 rateLimiter::rateLimiter() {
    mtx = new mutex();
+   svr = new server();
    cout << "ratelimiter created." << endl;
 }
 
@@ -15,9 +16,19 @@ bool rateLimiter::sendRequestToServer(request r) {
       result = false;
    } else {
       queueRemainder--;
-      sleep(2);//processing + call server here
+      svr->processRequest(r, this);
       result = true;
    }
    mtx->unlock();
    return result;
+}
+
+//increase queueRemainder because server can process more
+void rateLimiter::recieveResponseFromServer() {
+   mtx->lock();
+   if (queueRemainder < LIMIT) {
+      queueRemainder++;
+   }
+   mtx->unlock();
+
 }

@@ -1,10 +1,9 @@
 #include <iostream> //input and output stream
-#include <unistd.h>
+#include <unistd.h> //string
 #include <ctime> //time
 #include <fstream> //filestream
 #include <thread> //threading
 #include <vector>
-#include <chrono> //sleep
 
 #include "request.h"
 #include "rateLimiter.h"
@@ -14,14 +13,14 @@ using namespace std;
 // The function we want to execute on the new thread.
 void task1(rateLimiter* rL, string msg)
 {
-   request a;
+   request a(msg);
    time_t recorded_time = a.getCreationTime();
-   cout << "task " << msg << ": created request at " << asctime(localtime(&recorded_time)) << endl;
-   bool requestSent = rL->sendRequestToServer(a);
-   cout << "task " << msg << ":  request sent? " << requestSent << endl;
-
+   rL->sendRequestToServer(a);
+   cout << "task " << msg << ":  request sent";
 }
 
+
+//PURPOSE: to initialize server, rateLimiter, as well as all user requests and output log
 int main() {
    vector<thread> threads = vector<thread>(); 
    bool x = true;

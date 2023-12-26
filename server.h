@@ -3,11 +3,15 @@
 
 #include <cmath>
 #include <utility>
+#include <unistd.h> //sleep
+#include <stdlib.h> //random
+
 #include "request.h"
+#include "rateLimiter.h"
 
-using namespace std;
+class rateLimiter;
 
-//PURPOSE: to process user requests and track how many requests it has left
+//PURPOSE: to process user requests
 class server {
 
 public:
@@ -18,19 +22,17 @@ public:
      */
      server();
 
-
      /**
-     * Purpose: returns the request at random time intervals
-     * Must modify requests during processing and after processing complete
+     * Purpose: processes the request asyncronously
+     * Must modify requests during processing and after processing complete //TODO !!! 25Dec23 CG
      * @see server.cpp
      *
      * @param r is the user request being processed
+     * @param rL is the rateLimiter who initiated request approval
      */
-     bool processRequest(request r);
+     bool processRequest(request r, rateLimiter* rL);
     
-private:
-     std::uniform_int_distribution<int> uni(min,max)
-
+// private:
 
 };
 
