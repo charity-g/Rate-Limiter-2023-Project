@@ -5,11 +5,17 @@
 #include <utility>
 #include <ctime>
 #include <iostream>
+#include <mutex>
+#include <unistd.h> 
+#include <random>
 
 #include "request.h"
+#include "server.h"
 
+#define LIMIT 5 
 
 //PURPOSE: TODO: eventual abstract/interface for the different rateLimiter implementations 
+//currently: leaky bucket implementation that connects caller to server
 class rateLimiter {
 
 public:
@@ -23,7 +29,9 @@ public:
    //request recieveResponse(request r); //TODO !!! 25Dec23 CG
 
 private:
-   int queueRemainder = 5;
+   int queueRemainder = LIMIT; //MUST BE LOCKED BY MUTEX BEFORE READING/WRITING
+   std::mutex * mtx;
+   
    //server
    //log
 

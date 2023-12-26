@@ -15,9 +15,8 @@ public:
      * Constructor for a server.
      * @see server.cpp
      *
-     * @param n The number of requests it can concurrently run without being overwhelmed.
      */
-     server(int n);
+     server();
 
 
      /**
@@ -30,7 +29,7 @@ public:
      bool processRequest(request r);
     
 private:
-     int requests;
+     std::uniform_int_distribution<int> uni(min,max)
 
 
 };
